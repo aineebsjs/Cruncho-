@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="ur" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cruncho</title>
+  <style>
+    body { font-family: 'Noto Nastaliq Urdu', serif; background: #fff9f5; margin: 0; padding: 0; color: #333; }
+    header { background: #ff9900; padding: 20px; text-align: center; color: white; font-size: 2rem; }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 20px; }
+    .product { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; }
+    .product img { max-width: 100%; border-radius: 10px; }
+    .buttons { margin-top: 10px; }
+    button { padding: 10px; margin: 5px; border: none; border-radius: 5px; cursor: pointer; }
+    .review-btn { background: #f1c40f; }
+    .order-btn { background: #27ae60; color: white; }
+    #order-form-container { display: none; padding: 20px; background: #fff3e0; }
+    form { display: flex; flex-direction: column; gap: 10px; max-width: 400px; margin: auto; }
+    input, textarea, select { padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+    .submit-btn { background: #e67e22; color: white; }
+    footer { text-align: center; padding: 10px; background: #ff9900; color: white; }
+  </style>
+</head>
+<body><header>
+  Cruncho - مزیدار صحت مند Snacks
+</header><section class="product-grid">
+  <!-- Sample Product (repeat this 15 times) -->
+  <div class="product">
+    <img src="product1.jpg" alt="Product Image">
+    <h3>مکھانے - چیز فلیور</h3>
+    <div class="buttons">
+      <button class="review-btn">ریویو دیں</button>
+      <button class="order-btn" onclick="showOrderForm('مکھانے - چیز فلیور')">آرڈر کریں</button>
+    </div>
+  </div>
+  <!-- آپ باقی 14 پروڈکٹس ایسے ہی add کریں -->
+</section><section id="order-form-container">
+  <h2 style="text-align:center">آرڈر فارم</h2>
+  <form onsubmit="submitOrder(event)">
+    <input type="text" id="name" placeholder="آپ کا نام" required>
+    <input type="text" id="address" placeholder="آپ کا پتہ" required>
+    <input type="text" id="phone" placeholder="فون نمبر" required>
+    <input type="text" id="product" readonly>
+    <input type="number" id="quantity" placeholder="تعداد" required>
+    <button type="submit" class="submit-btn">آرڈر جمع کریں</button>
+  </form>
+  <p id="confirmation" style="text-align:center; color:green; display:none">آپ کا آرڈر موصول ہو گیا ہے!</p>
+</section><footer>
+  © 2025 Cruncho
+</footer><script>
+  function showOrderForm(productName) {
+    document.getElementById('order-form-container').style.display = 'block';
+    document.getElementById('product').value = productName;
+    document.getElementById('confirmation').style.display = 'none';
+  }
+
+  function submitOrder(event) {
+    event.preventDefault();
+    // Simple confirmation message
+    document.getElementById('confirmation').style.display = 'block';
+    event.target.reset();
+  }
+</script></body>
+</html>
